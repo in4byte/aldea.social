@@ -50,6 +50,9 @@
     document.getElementById("handleForm").addEventListener("submit", async function(e) {
         e.preventDefault();
         const handle = document.getElementById("handle").value;
+        const resultEl = document.getElementById("result");
+        resultEl.innerHTML = ""; // limpiar
+
         const res = await fetch("/api/register.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -57,15 +60,26 @@
         });
 
         const data = await res.json();
-        const resultEl = document.getElementById("result");
 
-        if (res.ok) {
-            resultEl.innerHTML = `<div class="alert alert-success">Tu nuevo handle es <strong>@${data.handle}</strong></div>`;
+        if (res.status === 200 && data.success) {
+            resultEl.innerHTML = `
+      <div class="alert alert-success">
+        <i class="fas fa-check-circle"></i> Tu nuevo handle es <strong>@${data.handle}</strong>
+      </div>`;
+        } else if (res.status === 409) {
+            resultEl.innerHTML = `
+      <div class="alert alert-warning">
+        <i class="fas fa-exclamation-triangle"></i> Ese handle ya está registrado.
+      </div>`;
         } else {
-            resultEl.innerHTML = `<div class="alert alert-danger">Error: ${data.detail}</div>`;
+            resultEl.innerHTML = `
+      <div class="alert alert-danger">
+        <i class="fas fa-times-circle"></i> Error: ${data.detail || 'No se pudo completar el registro'}
+      </div>`;
         }
     });
 </script>
+
 
 </body>
 </html>
