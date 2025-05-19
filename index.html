@@ -35,6 +35,11 @@
     <div class="form-container bg-white p-4 shadow-sm rounded">
         <form id="handleForm">
             <div class="mb-3">
+                <label for="token" class="form-label">Código de uso</label>
+                <input type="text" class="form-control" id="token" placeholder="introduce tu código" required>
+            </div>
+
+            <div class="mb-3">
                 <label for="handle" class="form-label">Tu handle actual en Bluesky</label>
                 <input type="text" class="form-control" id="handle" placeholder="ej: joan.bsky.social" required>
             </div>
@@ -50,16 +55,18 @@
     document.getElementById("handleForm").addEventListener("submit", async function(e) {
         e.preventDefault();
         const handle = document.getElementById("handle").value;
+        const token = document.getElementById("token").value;
         const resultEl = document.getElementById("result");
         resultEl.innerHTML = ""; // limpiar
 
         const res = await fetch("/api/register.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ handle })
+            body: JSON.stringify({ handle, token })
         });
 
         const data = await res.json();
+
 
         if (res.status === 200 && data.success) {
             resultEl.innerHTML = `
