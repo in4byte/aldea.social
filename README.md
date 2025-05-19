@@ -17,4 +17,14 @@
 3. Introduce un código de acceso proporcionado por el administrador
 4. El sistema creará automáticamente el registro `_atproto` correspondiente
 
+---
 
+## 📜 Licencia
+
+Este proyecto se ofrece bajo licencia MIT. Puedes adaptarlo o reutilizarlo para otras comunidades basadas en Bluesky o AT Protocol.
+
+---
+
+## 🤝 Contacto
+
+Creado por [@joan.aldea.social](https://bsky.app/profile/joan.aldea.social)
