@@ -6,7 +6,7 @@
 - Servidor con PHP 8.x y acceso a Composer
 - Node.js 16+ o Python 3.8+ para el generador de feed
 - Dominio gestionado desde OVH con acceso a la API
-- Claves de aplicación OVH (`application_key`, `application_secret`, `consumer_key`)
+- Claves de aplicación OVH (`application_key`, `application_secret`, `consumer_key`) almacenadas en ../ovh.php
 
 ---
 
