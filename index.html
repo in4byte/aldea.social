@@ -72,7 +72,7 @@
         if (res.status === 200 && data.success) {
             resultEl.innerHTML = `
       <div class="alert alert-success">
-        <i class="fas fa-check-circle"></i> Tu nuevo handle es <strong>@${data.handle}</strong>
+        <i class="fas fa-check-circle"></i> Tu nuevo handle es <strong>@${data.handle}</strong>. Para empezar a usarlo, accede a <a href="https://bsky.app/profile/joan.aldea.social/post/3lp7pheeu5k2f" target="_blank" rel="noopener noreferrer">este post</a> y sigue los pasos.
       </div>`;
         } else if (res.status === 409) {
             resultEl.innerHTML = `
