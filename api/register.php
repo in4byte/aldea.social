@@ -98,7 +98,7 @@ try {
 
     if (!empty($existing)) {
         http_response_code(409);
-        echo json_encode(['detail' => 'Este handle ya está registrado.']);
+        echo json_encode(['detail' => 'Este handle ya está registrado. Accede al post para empezar a usarlo.']);
         exit;
     }
 } catch (\Exception $e) {
