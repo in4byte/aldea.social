@@ -24,6 +24,7 @@ if (!in_array($token, $validTokens)) {
 }
 
 $handle = $input['handle'] ?? '';
+$handle = ltrim(trim($handle), '@');
 
 if (!preg_match('/^[a-z0-9\-\.]+\.[a-z]{2,}$/i', $handle)) {
     http_response_code(400);
