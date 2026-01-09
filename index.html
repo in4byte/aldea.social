@@ -41,7 +41,7 @@
 
             <div class="mb-3">
                 <label for="handle" class="form-label">Tu handle actual en Bluesky</label>
-                <input type="text" class="form-control" id="handle" placeholder="ej: joan.bsky.social" required>
+                <input type="text" class="form-control" id="handle" placeholder="ej: @joan.bsky.social" required>
             </div>
             <button type="submit" class="btn btn-primary w-100">
                 <i class="fas fa-paper-plane"></i> Registrar handle
@@ -54,7 +54,8 @@
 <script>
     document.getElementById("handleForm").addEventListener("submit", async function(e) {
         e.preventDefault();
-        const handle = document.getElementById("handle").value;
+        const handleInput = document.getElementById("handle").value;
+        const handle = handleInput.trim().replace(/^@+/, "");
         const token = document.getElementById("token").value;
         const resultEl = document.getElementById("result");
         resultEl.innerHTML = ""; // limpiar
@@ -76,7 +77,7 @@
         } else if (res.status === 409) {
             resultEl.innerHTML = `
       <div class="alert alert-warning">
-        <i class="fas fa-exclamation-triangle"></i> Ese handle ya está registrado.
+        <i class="fas fa-exclamation-triangle"></i> Ese handle ya está registrado. Accede a <a href="https://bsky.app/profile/joan.aldea.social/post/3lp7pheeu5k2f" target="_blank" rel="noopener noreferrer">este post</a> para empezar a usarlo.
       </div>`;
         } else {
             resultEl.innerHTML = `

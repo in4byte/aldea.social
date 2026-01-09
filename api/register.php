@@ -24,6 +24,7 @@ if (!in_array($token, $validTokens)) {
 }
 
 $handle = $input['handle'] ?? '';
+$handle = ltrim(trim($handle), '@');
 
 if (!preg_match('/^[a-z0-9\-\.]+\.[a-z]{2,}$/i', $handle)) {
     http_response_code(400);
@@ -97,7 +98,7 @@ try {
 
     if (!empty($existing)) {
         http_response_code(409);
-        echo json_encode(['detail' => 'Este handle ya está registrado.']);
+        echo json_encode(['detail' => 'Este handle ya está registrado. Accede al post para empezar a usarlo.']);
         exit;
     }
 } catch (\Exception $e) {
